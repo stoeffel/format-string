@@ -33,6 +33,14 @@ describe('format-string', function() {
     assert.equal(formatString(':property', obj), 'valueerty');
   });
 
+  it('should replace every appearence', function() {
+    assert.equal(formatString(':prop:prop:prop', obj), 'valuevaluevalue');
+    assert.equal(formatString(':another', obj), '42');
+    assert.equal(formatString(':prop = :another', obj), 'value = 42');
+    assert.equal(formatString(':prop:another', obj), 'value42');
+    assert.equal(formatString(':property', obj), 'valueerty');
+  });
+
   it('should replace dates with a formated date', function() {
     assert.equal(formatString(':ohNoADate', obj), '30.12.2014');
   });
@@ -45,6 +53,7 @@ describe('format-string', function() {
 
   it('shouldn\'t replace a prefixed property if the object doesn\'t own it', function() {
     assert.equal(formatString(':nope', obj), ':nope');
+    assert.equal(formatString(':value'), ':value');
   });
 
   it('should be possible to change the prefix', function() {

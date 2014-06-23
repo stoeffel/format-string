@@ -15,14 +15,15 @@ Usage
   var formatString = require('format-string');
 
   var user = {
-    name: 'Stoeffel'
+    name: 'Stoeffel',
+    modified: new Date()
   };
-  formatString('Hello, :name', user); // => Hello, Stoeffel
+  formatString('Hello, :name (:modified)', user); // => Hello, Stoeffel (31.12.2014)
 ```
 
-Cli
+CLI
 ---
 
 ```bash
-  $ format-string 'Hello, :name' name='Stoeffel'
+  $ format-string 'Hello, :name (:modified)' --name stoeffel --modified `date +"%m.%d.%y"`
 ```

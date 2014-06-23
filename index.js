@@ -15,7 +15,11 @@ module.exports = function(theString, theObject, config) {
     if (theObject[key] instanceof Date) {
       value = moment(theObject[key]).format(dateFormat);
     }
-    theString = theString.replace(prefix + key, value);
+    theString = theString.replace(new RegExp(escapeRegExp(prefix + key), 'g'), value);
   });
   return theString;
 };
+
+function escapeRegExp(string){
+  return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
+}
