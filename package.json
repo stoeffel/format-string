@@ -1,0 +1,30 @@
+{
+  "name": "format-string",
+  "version": "1.0.0",
+  "description": "replaces values in a string with content from a object",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stoeffel/format-string"
+  },
+  "keywords": [
+    "format",
+    "string",
+    "substitute"
+  ],
+  "author": "stoeffel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stoeffel/format-string/issues"
+  },
+  "homepage": "https://github.com/stoeffel/format-string",
+  "devDependencies": {
+    "mocha": "~1.20.1"
+  },
+  "dependencies": {
+    "minimist": "~0.2.0"
+  }
+}
