@@ -7,6 +7,8 @@ describe('format-string', function() {
     day = new Date(2014, 11, 30);
     obj = {
       prop: 'value',
+      upper: 'VALUE',
+      lower: 'value',
       another: 42,
       ohNoADate: day
     };
@@ -60,5 +62,23 @@ describe('format-string', function() {
     assert.equal(formatString('$prop', obj, {
       prefix: '$'
     }), 'value');
+  });
+
+
+  it('should return the value in lowercase', function() {
+    assert.equal(formatString(':upper{lower}', obj), 'value');
+    assert.equal(formatString(':upper{lower}lowered', obj), 'valuelowered');
+    assert.equal(formatString(':upper{lower}lowered', obj), 'valuelowered');
+    assert.equal(formatString(':upperX{lower}', obj), 'VALUEX{lower}');
+    assert.equal(formatString(':upper {lower}', obj), 'VALUE {lower}');
+    assert.equal(formatString(':upper{lower} :upper:upper{lower}', obj), 'value VALUEvalue');
+  });
+
+  it('should return the value in uppercase', function() {
+    assert.equal(formatString(':lower{upper}', obj), 'VALUE');
+    assert.equal(formatString(':lower{upper}lowered', obj), 'VALUElowered');
+    assert.equal(formatString(':lower{upper}lowered', obj), 'VALUElowered');
+    assert.equal(formatString(':lowerX{upper}', obj), 'valueX{upper}');
+    assert.equal(formatString(':lower {upper}', obj), 'value {upper}');
   });
 });
