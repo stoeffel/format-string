@@ -13,7 +13,7 @@
     "strict": false,
     "trailing": true,
     "smarttabs": true,
-    "indent": 4,
+    "indent": 2,
     "white": false,
     "quotmark": "single",
     "laxbreak": true,
