@@ -13,6 +13,12 @@ module.exports = function(theString, theObject, config) {
   theObject = theObject || {};
 
   Object.keys(theObject).forEach(function(key) {
+    if (isFunction(theObject[key])) {
+      formatFunctions[key] = theObject[key];
+    }
+  });
+
+  Object.keys(theObject).forEach(function(key) {
     var value = getValue(theObject, key),
       prefixedKey = prefix + key,
       needleFunction = createFunctionRegExp(prefixedKey),
@@ -35,6 +41,10 @@ module.exports = function(theString, theObject, config) {
   });
   return theString;
 };
+
+function isFunction(value) {
+  return typeof value === 'function';
+}
 
 function isDate(value) {
   return value instanceof Date;

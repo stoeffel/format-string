@@ -81,4 +81,12 @@ describe('format-string', function() {
     assert.equal(formatString(':lowerX{upper}', obj), 'valueX{upper}');
     assert.equal(formatString(':lower {upper}', obj), 'value {upper}');
   });
+
+  it('should use custom functions', function() {
+    obj.custom = function(value) {
+      return 'custom' + value;
+    };
+    assert.equal(formatString(':prop{custom}', obj), 'customvalue');
+    assert.equal(formatString(':prop{nope}', obj), 'value{nope}');
+  });
 });
