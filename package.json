@@ -29,6 +29,6 @@
   },
   "dependencies": {
     "minimist": "~0.2.0",
-    "moment": "~2.7.0"
+    "moment": "^2.15.2"
   }
 }
